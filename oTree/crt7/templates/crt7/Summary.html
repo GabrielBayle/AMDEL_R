@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 2" %}
+{% endblock %}
+
+{% block content %}
+
+<h5 class="mb-3">{% trans "Tâche 3" %} - {% trans "Résultat" %}</h5>
+
+<div class="card bg-light text-justify mb-3">
+    <div class="card-body">
+        <p class="card-text">
+            {% blocktrans trimmed %}
+            La tâche est terminée. Vous aurez le résultat à la fin de l'expérience. Cliquez sur "Suivant" pour
+            continuer.
+            {% endblocktrans %}
+        </p>
+    </div>
+</div>
+
+{% next_button %}
+
+{% endblock %}

@@ -1,0 +1,235 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-08 13:21+0200\n"
+"PO-Revision-Date: 2021-05-08 13:22+0200\n"
+"Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.3\n"
+
+#: models.py:28
+msgid "Administration"
+msgstr "Administration"
+
+#: models.py:28
+msgid "Archeology"
+msgstr "Archeologie"
+
+#: models.py:28
+msgid "Biology"
+msgstr "Biologie"
+
+#: models.py:29
+msgid "Buisiness school"
+msgstr "Ecole de commerce"
+
+#: models.py:29
+msgid "Chemistry"
+msgstr "Chimie"
+
+#: models.py:30
+msgid "Computer science"
+msgstr "Informatique"
+
+#: models.py:30
+msgid "Economics"
+msgstr "Economie"
+
+#: models.py:31
+msgid "Education"
+msgstr "Education"
+
+#: models.py:31
+msgid "Law"
+msgstr "Droit"
+
+#: models.py:31
+msgid "Management"
+msgstr "Management"
+
+#: models.py:32
+msgid "Nursing school"
+msgstr "Soins infirmiers"
+
+#: models.py:32
+msgid "Engineering"
+msgstr "École d'ingénieur"
+
+#: models.py:32
+msgid "Foreing language"
+msgstr "Langues étrangères"
+
+#: models.py:33
+msgid "Geography"
+msgstr "Géographie"
+
+#: models.py:34
+msgid "History"
+msgstr "Histoire"
+
+#: models.py:34
+msgid "Letters"
+msgstr "Lettres"
+
+#: models.py:34
+msgid "Mathematics"
+msgstr "Mathématiques"
+
+#: models.py:35
+msgid "Medicine"
+msgstr "Médecine"
+
+#: models.py:35
+msgid "Music"
+msgstr "Musique"
+
+#: models.py:35
+msgid "Pharmacy"
+msgstr "Pharmacie"
+
+#: models.py:36
+msgid "Philosophy"
+msgstr "Philosophie"
+
+#: models.py:36
+msgid "Physics"
+msgstr "Physique"
+
+#: models.py:36
+msgid "Politics"
+msgstr "Sciences politiques"
+
+#: models.py:37
+msgid "Psychology"
+msgstr "Psychologie"
+
+#: models.py:37
+msgid "Sociology"
+msgstr "Sociologie"
+
+#: models.py:37
+msgid "Sport"
+msgstr "Sport"
+
+#: models.py:38
+msgid "-- Not in the list --"
+msgstr "-- Pas dans la liste --"
+
+#: models.py:52
+msgid "Year of birth"
+msgstr "Année de naissance"
+
+#: models.py:54
+msgid "Female"
+msgstr "Femme"
+
+#: models.py:54
+msgid "Male"
+msgstr "Homme"
+
+#: models.py:54
+msgid "Gender"
+msgstr "Genre"
+
+#: models.py:56
+msgid "Nationality"
+msgstr "Nationalité"
+
+#: models.py:58
+msgid "Single"
+msgstr "Célibataire"
+
+#: models.py:58
+msgid "Pacsé(e)"
+msgstr "Pacsé(e)"
+
+#: models.py:58
+msgid "Married"
+msgstr "Marié(e)"
+
+#: models.py:58
+msgid "Divorced"
+msgstr "Divorcé(e)"
+
+#: models.py:58
+msgid "Widowed"
+msgstr "Veuf(ve)"
+
+#: models.py:59
+msgid "Marital status"
+msgstr "Statut marital"
+
+#: models.py:61
+msgid "Are you a student"
+msgstr "Étudiant(e)"
+
+#: models.py:64
+msgid "Level of study"
+msgstr "Niveau d'études"
+
+#: models.py:67
+msgid "Discipline of study"
+msgstr "Discipline étudiée"
+
+#: models.py:70
+msgid "Agriculteurs exploitants"
+msgstr ""
+
+#: models.py:71
+msgid "Artisans, commerçants et chefs d’entreprise"
+msgstr ""
+
+#: models.py:72
+msgid "Cadres et professions intellectuelles supérieures"
+msgstr ""
+
+#: models.py:73
+msgid "Professions Intermédiaires"
+msgstr ""
+
+#: models.py:74
+msgid "Employés"
+msgstr ""
+
+#: models.py:75
+msgid "Ouvriers"
+msgstr ""
+
+#: models.py:76
+msgid "Retraités"
+msgstr ""
+
+#: models.py:77
+msgid "Autres personnes sans activité professionnelle"
+msgstr ""
+
+#: models.py:78
+msgid "Socio-professional group"
+msgstr "Catégorie socio-professionnelle"
+
+#: models.py:80
+msgid "Have you ever participated to an economic experiment ?"
+msgstr "Avez-vous déjà participé à une expérience d'économie ?"
+
+#: pages.py:14
+msgid "Select your socio-professional group"
+msgstr "Merci de sélectionner votre catégorie socio-professionnelle"
+
+#: templates/demographics2/DemogQuestionnaire.html:6
+msgid "Socio-demographic questionnaire"
+msgstr "Questionnaire socio-démographique"
+
+#: templates/demographics2/DemogQuestionnaire.html:14
+msgid "Please fill in the form below."
+msgstr "Merci de remplir le questionnaire ci-dessous."

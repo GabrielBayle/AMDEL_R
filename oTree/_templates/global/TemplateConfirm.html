@@ -1,0 +1,25 @@
+{% load otree static %}
+{% load i18n %}
+
+{% with the_id_modal=id_modal|default:"modal_content" %}
+<div class="modal fade" id="{{the_id_modal}}" tabindex="-1" role="dialog" aria-labelledby="modal_area_title" aria-hidden="true">
+{% endwith %}
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal_area_title">
+          {% with titre=title %}
+            {{ titre }}
+          {% endwith %}
+        </h3>
+      </div>
+      <div class="modal-body">
+        {{ content }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="confirm_yes" data-dismiss="modal">{% trans "Yes" %}</button>
+        <button type="button" class="btn btn-secondary" id="confirm_no" data-dismiss="modal">{% trans "No" %}</button>
+      </div>
+    </div>
+  </div>
+</div>

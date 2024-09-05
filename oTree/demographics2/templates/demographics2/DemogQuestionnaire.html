@@ -1,0 +1,42 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+<!--{% trans "Partie 3" %}-->
+{% endblock %}
+
+{% block content %}
+<!--<h5 class="mb-3">{% trans "Questionnaire 2" %}</h5>-->
+
+<div class="card bg-light text-justify mb-3">
+    <div class="card-body">
+        <p class="card-text">
+            {% trans "Please fill in the form below." %}
+        </p>
+    </div>
+</div>
+
+    {% for field in form %}
+    <div class="card mb-2">
+        <div class="card-body">
+            <span class="font-weight-bold">{{ field.label }}</span>  <br> {{ field }}
+        </div>
+    </div>
+    {% endfor %}
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'fill_auto.js' %}"></script>
+<script>
+    window.onload = function () {
+        if (js_vars.fill_auto)
+            fill_auto();
+    }
+
+</script>
+{% endblock %}
+

@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 2" %}
+{% endblock %}
+
+{% block content %}
+<h5 class="mb-3">{% trans "Tâche 3" %}</h5>
+
+<div class="card bg-light text-justify mb-3">
+    <div class="card-body">
+        <p class="card-text">
+            {% blocktrans trimmed with gain=Constants.gain_par_reponse temps_max=Constants.temps_max %}
+            Merci de répondre aux 7 questions ci-dessous. Chaque réponse correcte rapporte {{ gain }} euros. <br>
+            Vous disposez d'un maximum de {{ temps_max }} minutes.
+            {% endblocktrans %}
+        </p>
+    </div>
+</div>
+
+<table class="table mb-3">
+    {% for field in form %}
+    <tr>
+        <td>{{ field.label }}</td>
+        <td>{{ field }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% next_button %}
+{% endblock %}

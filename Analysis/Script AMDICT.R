@@ -15,7 +15,7 @@ library(ggplot2)
 
 # 1 - DATASET WORKS ---- ####
 #DATA = read.table("C:/Users/Gabriel Bayle/Documents/1 - Autres projets/AM DICTATEUR/DATA.csv",sep=",",header=T)
-DATA = read.table("C:/Users/bayle/ownCloud - BAYLE Gabriel@mycore.cnrs.fr/1 - Autres projets/AM DICTATEUR/DATA.csv",sep=",",header=T)
+DATA = read.table("C:/Users/Gabriel Bayle/Documents/1 - Autres projets/AM DICTATEUR/DATA.csv",sep=",",header=T)
 
 ## 1.1 - Creation of variables ####
 
@@ -549,9 +549,9 @@ abline(h=12,lty=3,col="black")
 text(1.78,18.3, "Nash", col="black", cex = 1.20)
 text(2.08,12.3, "Optimum", col="black", cex = 1.20)
 legend("topright",legend = c("Unregulated","Delegation mechanism"),lty=c(1,1),col=c("firebrick1","orange"),bty = "n",pch=c(16,17), cex=1.3)
-text(5.6,10,"Sequence 1 (S1)",col="black",adj=0.5,cex=1.5)
+text(5.6,10,"Phase 1",col="black",adj=0.5,cex=1.5)
 #text(5.6,10,"WITHOUT TREATEMENT",col="black",adj=0.5,cex=1.5)
-text(15.4,10,"Sequence 2 (S2)",col="black",adj=0.5,cex=1.5)
+text(15.4,10,"Phase 2",col="black",adj=0.5,cex=1.5)
 #text(15.4,10,"WITH TREATEMENT",col="black",adj=0.5,cex=1.5)
 
 
@@ -585,9 +585,9 @@ abline(h=12,lty=3,col="black")
 text(1.78,18.3, "Nash", col="black", cex = 1.20)
 text(2.08,12.3, "Optimum", col="black", cex = 1.20)
 legend("topright",legend = c("Unregulated","Majority","Unanimity"),lty=c(1,1,1),col=c("firebrick1","royalblue","forestgreen"),bty = "n",pch=c(16,17,15),cex=1.3)
-text(5.6,10,"Sequence 1 (S1)",col="black",adj=0.5,cex=1.5)
+text(5.6,10,"Phase 1",col="black",adj=0.5,cex=1.5)
 #text(5.6,10,"WITHOUT TREATEMENT",col="black",adj=0.5,cex=1.5)
-text(15.4,10,"Sequence 2 (S2)",col="black",adj=0.5,cex=1.5)
+text(15.4,10,"Phase 2",col="black",adj=0.5,cex=1.5)
 #text(15.4,10,"WITH TREATEMENT",col="black",adj=0.5,cex=1.5)
 
 ## 3.3 - Figure X ####

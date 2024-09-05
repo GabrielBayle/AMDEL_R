@@ -12,6 +12,7 @@ This repository contains all supplementary materials for the paper:
 2. **R Code for Analysis**  
    - Script written in R used to analyze the experimental data.
    - This script contains statistical tests, models, and visualizations discussed in the paper.
+   - Figures contained in the paper provided in `.png`.
    
 3. **oTree Code for the Experiment**  
    - The oTree code that was used to conduct the experiment.

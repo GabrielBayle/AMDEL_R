@@ -1,0 +1,61 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Questionnaire de compréhension" %}
+{% endblock %}
+
+{% block content %}
+<div class="text-right mb-3">
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal_area">{% trans "Instructions" %}</button>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#payoff_table">{% trans "Tableau des gains" %}</button>
+</div>
+
+
+{% for q in session.vars.understanding %}
+<div class="card bg-light text-justify mb-3">
+    <div class="card-body">
+        <h5 class="card-title">Question {{ forloop.counter }}</h5>
+        <p class="card-text">
+            {{ q.question|linebreaks }}
+        </p>
+    </div>
+</div>
+<div class="mb-5">
+    <select class="form-control" name="understanding_{{forloop.counter0}}" id="id_understanding_{{forloop.counter0}}">
+        <option value="">---</option>
+        {% for p in q.propositions %}
+        <option value="{{p}}">{{p}}</option>
+        {% endfor %}
+    </select>
+</div>
+{% endfor %}
+
+<button type="button" class="btn btn-primary" onclick="validate();">{% trans "Suivant" %}</button>
+<p class="text-danger mt-3" id="msg_error"></p>
+
+{% if player.round_number < Constants.round_second_part %}
+    {% include "global/TemplateModal.html" with title="Instructions" content="mecanisme_approbation/Instructions1Template.html" %}
+{% else %}
+    {% include "global/TemplateModal.html" with title="Instructions" content="mecanisme_approbation/Instructions2Template.html" %}
+{% endif %}
+{% include "mecanisme_approbation/payoffTable.html" %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function validate(){
+        let the_selects = document.querySelectorAll("select");
+        for (let i=0; i<the_selects.length; i++) {
+            if (the_selects[i].value === ""){
+                document.querySelector("#msg_error").innerHTML = "Vous devez répondre à la question " + String(i+1);
+                return false;
+            }
+        }
+        document.querySelector("form").submit();
+    }
+
+</script>
+{% endblock %}

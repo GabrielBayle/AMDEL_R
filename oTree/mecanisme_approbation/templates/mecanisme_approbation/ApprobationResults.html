@@ -1,0 +1,54 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 1" %}
+{% endblock %}
+
+{% block content %}
+<h5 class="mb-3">{% trans "Période" %} {{ player.round_number }} - {% trans "Résultats de l'approbation" %}</h5>
+
+<div class="text-right mb-3">
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal_area">{% trans "Instructions" %}</button>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#payoff_table">{% trans "Tableau des gains" %}</button>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#history">{% trans "Historique" %}</button>
+</div>
+
+<div class="card text-justify bg-light mb-3">
+    <div class="card-body">
+        <p class="card-text">
+            {% if player.group.approbation_yes == 0 %}
+                {% trans "Aucun joueur de votre groupe n'a approuvé les investissements." %}
+            {% elif player.group.approbation_yes == 1 %}
+                {% trans "1 joueur de votre groupe a approuvé les investissements et 2 les ont désapprouvés." %}
+            {% elif player.group.approbation_yes == 2 %}
+                {% trans "2 joueurs de votre groupe ont approuvé les investissements et 1 les a désapprouvés." %}
+            {% else %}
+                {% trans "Les 3 joueurs de votre groupe ont approuvé les investissements." %}
+            {% endif %}
+        </p>
+        <p class="card-text">
+            {% if player.group.approbation_group %}
+                {% blocktrans trimmed %}
+                Les investissements vont donc s'appliquer.
+                {% endblocktrans %}
+            {% else %}
+                {% blocktrans trimmed %}
+                Un des joueurs de votre groupe va être désigné aléatoirement pour être le décideur de cette période. Le
+                décideur va choisir le niveau d'investissement commun dans l'activité A qui sera imposé à chacun des membres
+                du groupe. Ce niveau d'investissement devra être compris entre le minimum et le maximum des propositions
+                de l'étape précédente.
+                {% endblocktrans %}
+            {% endif %}
+        </p>
+    </div>
+</div>
+
+{% next_button %}
+
+
+{% include "global/TemplateModal.html" with title="Instructions" content="mecanisme_approbation/Instructions2Template.html" %}
+{% include "mecanisme_approbation/payoffTable.html" %}
+{% include "mecanisme_approbation/history.html" %}
+{% endblock %}

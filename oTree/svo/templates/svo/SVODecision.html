@@ -1,0 +1,139 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 2" %}
+{% endblock %}
+
+{% block styles %}
+<style>
+    table, tr, td {
+        border: 2px solid black;
+        border-collapse: collapse;
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<h5 class="mb-3">{% trans "Tâche 1" %}</h5>
+
+<div class="card bg-light text-justify mb-3">
+    <div class="card-body">
+        <p class="card-text">
+            {% blocktrans trimmed %}
+            Pour cette partie l'ordinateur central va former des paires, de manière aléatoire. Vous ne pouvez pas identifier
+            l'autre personne de votre paire, et elle ne peut pas vous identifier.
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed %}
+            Pour chacun des six tableaux ci-dessous vous devez choisir une répartition d'argent, en ECUs, entre vous et l'autre
+            personne de votre paire.
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed %}
+            Dans chaque tableau, la ligne du haut indique le montant pour vous, et la ligne du bas le montant
+            pour l'autre personne de votre paire. Pour choisir la répartition que vous préférez il vous suffit
+            de cliquer sur le bouton correspondant.
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed %}
+            L'ordinateur sélectionnera au hasard un des six tableaux, puis appliquera à la paire le choix d'une des
+            deux personnes de la paire, sélectionnée également de manière aléatoire. Ainsi soit c'est votre choix qui
+            s'appliquera à la paire soit c'est celui de l'autre personne de votre paire.
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed %}
+            Le taux de conversion est 10 ECUs = {{ conversion }} euros.
+            {% endblocktrans %}
+        </p>
+    </div>
+</div>
+
+    {% for matrice, matrice_content in Constants.matrices.items %}
+        <h5 class="mb-3">{% trans "Tableau" %} {{ matrice }}</h5>
+        <table class="table table-bordered mb-3">
+        <tbody>
+        <tr>
+            <td>{% trans "Pour vous" %}</td>
+            {% for vself in matrice_content.self %}
+            <td id="matrice_{{ matrice }}_top_{{ forloop.counter0 }}">{{ vself }}<br>ECUs</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td></td>
+            {% for vself in matrice_content.self %}
+            <td id="matrice_{{ matrice }}_center_{{ forloop.counter0 }}">
+            <input type="radio" name="svo_choice_{{ matrice }}" value="{{forloop.counter0}}" onclick="draw_cells({{ matrice }}, {{ forloop.counter0 }});">
+            </td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td>{% trans "Pour l'autre" %}</td>
+            {% for vother in matrice_content.other %}
+            <td id="matrice_{{ matrice }}_bottom_{{ forloop.counter0 }}">{{ vother }}<br>ECUs</td>
+            {% endfor %}
+        </tr>
+        </tbody>
+        </table>
+    {% endfor %}
+
+    <button type="button" class="btn btn-primary" onclick="validate();">{% trans "Suivant" %}</button>
+    <p class="mt-3 text-danger" id="id_msg_error"></p>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    draw_cells = function(which_matrice, which_cell) {
+        for (let i=0; i<9; i++) {
+            if (i !== which_cell) {
+                document.querySelector("#matrice_" + which_matrice + "_top_" + i).style.backgroundColor = "white";
+                document.querySelector("#matrice_" + which_matrice + "_center_" + i).style.backgroundColor = "white";
+                document.querySelector("#matrice_" + which_matrice + "_bottom_" + i).style.backgroundColor = "white";
+            } else {
+                document.querySelector("#matrice_" + which_matrice + "_top_" + i).style.backgroundColor = "linen";
+                document.querySelector("#matrice_" + which_matrice + "_center_" + i).style.backgroundColor = "linen";
+                document.querySelector("#matrice_" + which_matrice + "_bottom_" + i).style.backgroundColor = "linen";
+            }
+        }
+    }
+
+    function fill_auto() {
+        for (let i in js_vars.matrices) {
+            let the_radios = document.querySelectorAll("input[name=svo_choice_" + i + "]");
+            let selected = Math.floor(Math.random() * the_radios.length);
+            the_radios[selected].checked = true;
+            draw_cells(i, selected);
+        }
+        setTimeout(function(){
+            document.querySelector("form").submit();
+        }, 2000);
+    }
+
+    function validate() {
+        for (let i in js_vars.matrices) {
+            let the_radios = document.querySelectorAll("input[name=svo_choice_" + i + "]");
+            let the_checked = null;
+            for (let j=0; j<the_radios.length; j++) {
+                if (the_radios[j].checked) {
+                    the_checked = the_radios[j].checked || null
+                    break;
+                }
+            }
+            if (the_checked === null) {
+                document.querySelector("#id_msg_error").innerHTML = "Il faut faire un choix pour chaque tableau";
+                return false
+            }
+        }
+        document.querySelector("form").submit();
+    }
+</script>
+{% endblock %}
+

@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 3" %}
+{% endblock %}
+
+{% block content %}
+<h5 class="mb-3">{% trans "Questionnaire 1" %}</h5>
+<div class="card bg-light text-justify mb-3">
+    <div class="card-body">
+        <p class="card-text">
+            {% blocktrans trimmed %}
+            Ci-dessous vous trouverez des phrases concernant la relation entre les êtres humains et l'environnement.
+            Pour chaque phrase, indiquez, si vous êtes tout à fait d'accord – plutôt d'accord – plutôt pas d’accord –
+            pas du tout d’accord – je ne sais pas – en sélectionnant votre réponse.
+            {% endblocktrans %}
+        </p>
+    </div>
+</div>
+
+<table class="table-sm table-striped mb-3">
+    {% for field in form %}
+    <tr>
+        <td>{{ field.label }}</td>
+        <td>{{ field }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% next_button %}
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+    function fill_auto() {
+        let the_selects = document.querySelectorAll("select");
+        for (let i=0; i<the_selects.length; i++) {
+            let nb_options = the_selects[i].options.length;
+            let choix_option = Math.floor(Math.random() * (nb_options - 1) + 1);
+            the_selects[i].value = the_selects[i].options[choix_option].value;
+        }
+        setTimeout(function(){
+            document.querySelector("form").submit();
+        }, 2000);
+    }
+</script>
+{% endblock %}

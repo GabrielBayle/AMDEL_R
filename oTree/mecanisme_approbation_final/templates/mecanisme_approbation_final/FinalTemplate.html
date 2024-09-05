@@ -1,0 +1,26 @@
+{% load otree %}
+{% load i18n %}
+
+<div class="card bg-light text-justify mb-3">
+  <div class="card-body">
+    <p class="card-text">
+      {% blocktrans trimmed %}
+      L'expérience est terminée, merci pour votre participation.
+      {% endblocktrans %}
+    </p>
+    <p class="card-text">
+      {% blocktrans trimmed %}
+      Ci-dessous le détail de vos gains aux différentes parties et tâches.
+      {% endblocktrans %}
+    </p>
+    <ul>
+      <li>{% trans "Partie 1" %}: {{ participant.vars.ma_txt_final }}</li>
+      <li>{% trans "Partie 2 - tâche 1" %}: {{ participant.vars.svo_txt_final }}</li>
+      <li>{% trans "Partie 2 - tâche 2" %}: {{ participant.vars.targetNLE_txt_final }}</li>
+      <li>{% trans "Partie 2 - tâche 3" %}: {{ participant.vars.crt_txt_final }}</li>
+    </ul>
+    <p class="card-text">
+      {{ participant.vars.txt_final }}
+    </p>
+  </div>
+</div>

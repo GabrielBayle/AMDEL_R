@@ -1,0 +1,154 @@
+{% load otree static %}
+{% load i18n %}
+
+<div class="card bg-light text-justify mb-3">
+    <div class="card-body">
+
+        <p class="card-text">
+            {% blocktrans trimmed %}
+            Comme la phase 1, la phase 2 comporte 10 périodes consécutives au cours desquelles vous interagirez avec
+            les mêmes personnes que durant la phase 1. De même qu'à la phase 1, vous et les autres joueurs de votre
+            groupe, devrez décider de votre investissement dans l'activité A. Les gains de l'activité A et de
+            l'activité B sont rigoureusement identiques à ceux de la phase 1. Vous utiliserez donc le même tableau
+            de gain que pour la phase 1.
+            {% endblocktrans %}
+        </p>
+
+        {% if subsession.treatment == Constants.baseline %}
+        <p class="card-text">
+            {% blocktrans trimmed %}
+            En somme, la phase 2 est rigoureusement identique à la phase 1.
+            {% endblocktrans %}
+        </p>
+
+        {% elif subsession.treatment == Constants.majority %}
+
+        <p class="card-text">
+            {% blocktrans trimmed with group_size=Constants.players_per_group others=Constants.other_players_per_group %}
+            Au cours de la phase 2, chaque période comporte désormais deux étapes : l'étape 1 et l'étape 2. L'étape 1
+            correspond à la décision d'investissement : vous et les {{ others }} autres joueurs, devrez chacun décider du
+            montant que vous souhaitez investir dans l'activité A. L'étape 1 correspond exactement au choix
+            d'investissement de la première phase. L'étape 2 est nouvelle. Lorsque les {{ group_size }} membres de
+            votre groupe (vous y compris) auront choisi chacun leur montant d'investissement dans l'activité A, ces
+            choix seront rendus publics et soumis à l'approbation de chacun. Si au moins {{ others }} membres du groupe
+            approuvent les décisions d'investissement choisies, alors celles-ci s'appliqueront et chacun réalisera les
+            gains correspondants.
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed with others=Constants.other_players_per_group %}
+            En cas de désapprobation d'au moins {{ others }} joueurs de votre groupe, un niveau d'investissement
+            identique sera appliqué à chacun des membres de votre groupe. Ce montant d'investissement sera choisi par
+            l'un des membres du groupe qui sera désigné pour être le "décideur" de la période en cours. Cela est
+            expliqué dans la suite des instructions.
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed with group_size=Constants.players_per_group others=Constants.other_players_per_group %}
+            A l'étape 1, l'ordinateur vous demandera d'indiquer le montant de votre investissement dans l'activité A.
+            A l'étape 2, l'ordinateur vous communiquera le nombre de jetons que vous proposez d'investir et que les
+            deux autres joueurs de votre groupe proposent d'investir pour la période en cours. Il vous communiquera
+            également les gains totaux correspondants à ces investissements, pour vous et pour les deux autres joueurs.
+            Après avoir pris connaissance des propositions d'investissement et des gains associés, l'ordinateur
+            vous demandera si vous approuvez ou non les choix d'investissement des {{ others }} autres membres de votre
+            groupe. Vous cliquerez sur OUI si vous approuvez les propositions d'investissement des {{ others }} autres
+            membres de votre groupe ou NON, si vous désapprouvez leurs propositions d'investissement. Simultanément,
+            les {{ others }} autres joueurs devront également approuver ou désapprouver les propositions
+            d'investissement pour la période.
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed with group_size=Constants.players_per_group others=Constants.other_players_per_group %}
+            Ainsi, si au moins {{ others }} membres de votre groupe approuvent les propositions des autres joueurs,
+            les propositions d'investissement choisies à l'étape 1 seront exécutées par l'ordinateur qui affichera ces
+            investissements et les gains totaux associés. Si au moins {{ others }} membres de votre groupe désapprouvent
+            les propositions des autres joueurs, les propositions choisies à l'étape 1 ne seront pas mises en oeuvre.
+            Dans ce cas, l'ordinateur sélectionnera par tirage au sort un des membres de votre groupe pour être le
+            décideur de la période en cours. Le décideur devra choisir le niveau d'investissement commun dans
+            l'activité A qui sera imposé à chacun des membres du groupe. Ce niveau d’investissement sera compris
+            entre le minimum et le maximum des propositions de l'étape 1.
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            <em>
+            {{ part_2_majority_exemple_3 }}
+            </em>
+        </p>
+        <p>
+            <em>
+                {{ part_2_majority_exemple_4 }}
+            </em>
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed with group_size=Constants.players_per_group others=Constants.other_players_per_group %}
+            A la fin de l'étape 2, l'ordinateur affichera votre montant investi dans l'activité A et votre montant
+            investi dans l'activité B, le montant investi dans l'activité A par les deux autres joueurs et votre gain
+            correspondant pour la période. A la fin de la période l'ordinateur affichera également le gain total de
+            chaque membre de votre groupe pour cette période. Lorsque tous les joueurs auront cliqué sur le bouton
+            "suivant", la période suivante pourra démarrer. Depuis chaque écran un bouton "historique" vous permettra
+            d'afficher un tableau avec votre gain total pour chacune des périodes passées.
+            {% endblocktrans %}
+        </p>
+
+        {% else %}
+
+        <p class="card-text">
+            {% blocktrans trimmed with group_size=Constants.players_per_group others=Constants.other_players_per_group %}
+            Au cours de la phase 2, chaque période comporte désormais deux étapes : l'étape 1 et l'étape 2. L'étape 1
+            correspond à la décision d'investissement : vous et les {{ others }} autres joueurs, devrez chacun décider du
+            montant que vous souhaitez investir dans l'activité A. L'étape 1 correspond exactement au choix
+            d'investissement de la première phase. L'étape 2 est nouvelle. Lorsque les {{ group_size }} membres de
+            votre groupe (vous y compris) auront choisi chacun leur montant d'investissement dans l'activité A, ces
+            choix seront rendus publics et soumis à l'approbation de chacun. Si tous les membres du groupe approuvent
+            les décisions d'investissement choisies, alors celles-ci s'appliqueront et chacun réalisera les gains
+            correspondants. En cas de désapprobation d'au moins un joueur de votre groupe, un niveau d'investissement
+            identique sera appliqué à chacun des membres de votre groupe. Ce montant d'investissement sera choisi par
+            l'un des membres du groupe, qui sera désigné aléatoirement, pour être le "décideur" de la période en cours
+            en cas de désapprobation. Cela est expliqué dans la suite des instructions.
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed with group_size=Constants.players_per_group others=Constants.other_players_per_group %}
+            A l’étape 1, l'ordinateur vous demandera d'indiquer le montant de votre investissement dans l'activité A.
+            A l'étape 2, l'ordinateur vous communiquera le nombre de jetons que vous proposez d'investir et que les
+            deux autres joueurs de votre groupe proposent d'investir pour la période en cours. Il vous communiquera
+            également les gains totaux correspondants à ces investissements, pour vous et pour les deux autres joueurs.
+            Après avoir pris connaissance des propositions d'investissement et des gains associés, l'ordinateur vous
+            demandera si vous approuvez ou non les choix d'investissement des deux autres membres de votre groupe.
+            Vous cliquerez sur OUI si vous approuvez les propositions d'investissement des {{ others }} autres membres
+            de votre groupe ou NON, si vous désapprouvez leurs propositions d'investissement. Simultanément, les
+            {{ others }} autres joueurs devront également approuver ou désapprouver les propositions d'investissement
+            pour la période.
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed with group_size=Constants.players_per_group others=Constants.other_players_per_group %}
+            Ainsi, si tous les membres de votre groupe approuvent les propositions des autres joueurs, les propositions
+            d'investissement choisie à l'étape 1 seront exécutées par l'ordinateur qui affichera ces investissements et
+            les gains totaux associés. Si au moins un des membres de votre groupe désapprouve les propositions des
+            autres joueurs, les propositions choisies à l'étape 1 ne seront pas mises en œuvre. Dans ce cas,
+            l'ordinateur sélectionnera par tirage au sort un des membres de votre groupe pour être le décideur de la
+            période en cours. Le décideur devra choisir le niveau d'investissement commun dans l'activité A qui sera
+            imposé à chacun des membres du groupe. Ce niveau d'investissement devra être compris entre le minimum et
+            le maximum des propositions de l'étape 1.
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            <em>
+            {{ part_2_unanimity_exemple_3 }}
+            </em>
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed with group_size=Constants.players_per_group others=Constants.other_players_per_group %}
+            A la fin de l'étape 2, l’ordinateur affichera votre montant investi dans l'activité A et votre montant
+            investi dans l'activité B, le montant investi dans l'activité A par les deux autres joueurs et votre gain
+            correspondant pour la période. A la fin de la période l'ordinateur affichera également le gain total de
+            chaque membre de votre groupe pour cette période. Lorsque tous les joueurs auront cliqué sur le bouton
+            "suivant", la période suivante pourra démarrer. Depuis chaque écran un bouton "historique" vous permettra
+            d'afficher un tableau avec votre gain total pour chacune des périodes passées.
+            {% endblocktrans %}
+        </p>
+
+        {% endif %}
+    </div>
+</div>

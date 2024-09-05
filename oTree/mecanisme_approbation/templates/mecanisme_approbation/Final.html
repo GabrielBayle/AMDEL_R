@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 1" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="card text-justify bg-light mb-3">
+    <div class="card-body">
+        <p class="card-text">
+            {% if player.round_number != Constants.num_rounds %}
+            {% blocktrans trimmed %}
+            Fin de la phase 1. Veuillez cliquer sur le bouton "Suivant" pour démarrer la phase 2.
+            {% endblocktrans %}
+            {% else %}
+            {% blocktrans trimmed %}
+            Fin de la phase 2, et donc de la partie 1. Vous connaîtrez votre gain pour cette partie à la fin de
+            l'expérience. Cliquez sur le bouton "Suivant" pour démarrer la partie 2.
+            {% endblocktrans %}
+            {% endif %}
+        </p>
+    </div>
+</div>
+    {% next_button %}
+
+{% endblock %}

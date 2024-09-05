@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 1" %}
+{% endblock %}
+
+{% block content %}
+<h5 class="mb-3">{% trans "Période" %} {{ player.round_number }}</h5>
+
+<div class="text-right mb-3">
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal_area">{% trans "Instructions" %}</button>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#payoff_table">{% trans "Tableau des gains" %}</button>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#history">{% trans "Historique" %}</button>
+</div>
+
+<div class="card text-justify bg-light mb-3">
+    <div class="card-body">
+        <p class="card-text">
+            {% blocktrans trimmed with group_size=Constants.players_per_group invest_min=group.extraction_dictator_min invest_max=group.extraction_dictator_max %}
+            Vous avez été aléatoirement sélectionné pour décider pour les {{ group_size }} joueurs de votre groupe.
+            L'investissement que vous allez choisir va s'appliquer à chacun des membres du groupe, vous y compris.
+            L'investissement doit être compris entre {{ invest_min }} et {{ invest_max }}.
+            {% endblocktrans %}
+        </p>
+    </div>
+</div>
+
+<div class="mb-3">
+    <p>{% trans "Veuillez saisir le montant de l'investissement qui va être imposé à chacun" %}</p>
+    {% formfield group.extraction_dictator label="" %}
+</div>
+
+    {% next_button %}
+
+{% include "global/TemplateModal.html" with title="Instructions" content="mecanisme_approbation/Instructions2Template.html" %}
+{% include "mecanisme_approbation/payoffTable.html" %}
+{% include "mecanisme_approbation/history.html" %}
+{% endblock %}

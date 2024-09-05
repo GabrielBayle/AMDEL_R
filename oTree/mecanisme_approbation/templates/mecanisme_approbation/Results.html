@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 1" %}
+{% endblock %}
+
+{% block content %}
+<h5 class="mb-3">{% trans "Période" %} {{ player.round_number }} - Résultats</h5>
+
+<div class="text-right mb-3">
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal_area">{% trans "Instructions" %}</button>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#payoff_table">{% trans "Tableau des gains" %}</button>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#history">{% trans "Historique" %}</button>
+</div>
+
+<div class="card bg-light text-justify mb-3">
+    <div class="card-body">
+        <p class="card-text">
+            {{ participant.vars.ma_txt_round }}
+        </p>
+    </div>
+</div>
+
+{% next_button %}
+
+{% include "global/TemplateModal.html" with title="Instructions" content="mecanisme_approbation/Instructions1Template.html" %}
+{% include "mecanisme_approbation/payoffTable.html" %}
+{% include "mecanisme_approbation/history.html" with page="result" %}
+{% endblock %}

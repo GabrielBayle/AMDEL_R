@@ -1,0 +1,27 @@
+{% load otree %}
+{% load i18n %}
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>{% trans "Participant" %}</th>
+    <th>{% trans "Poste/Label" %}</th>
+    <th>{% trans "Groupe"%}</th>
+    <th>{% trans "Période payée" %}</th>
+    <th>{% trans "Gain période" %}</th>
+    <th>{% trans "Gain partie" %}</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for row in players_infos %}
+  <tr>
+    <td>{{ row.participant }}</td>
+    <td>{{ row.participant_label }}</td>
+    <td>{{ row.group_number }}</td>
+    <td>{{ row.paid_round }}</td>
+    <td>{{ row.payoff }} ECUs</td>
+    <td>{{ row.part_payoff }} ECUs</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>

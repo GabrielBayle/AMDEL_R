@@ -1,0 +1,141 @@
+{% load otree static %}
+{% load i18n %}
+
+<div class="card bg-light text-justify mb-3">
+    <div class="card-body">
+        <section id="cadre_general">
+            <h4 class="mb-3">{% trans "Cadre général" %}</h4>
+            <p class="card-text">
+                {% blocktrans trimmed with group_size=Constants.players_per_group %}
+                Au début de l'expérience, vous serez affecté(e) aléatoirement à un groupe de {{ group_size }} joueurs.
+                La composition de votre groupe restera inchangée jusqu'à la fin de la partie.
+                {% endblocktrans %}
+            </p>
+            <p class="card-text">
+                {% blocktrans trimmed %}
+                La partie est divisée en 2 phases. Chaque phase consiste en une succession de 10 périodes. La
+                suite des instructions concerne uniquement la phase 1. A la fin de la phase 1, vous recevrez de
+                nouvelles instructions spécifiques à la phase 2. A la fin de la partie, une des 20 périodes sera
+                tirée au sort et vos gains (en monnaie expérimentale, l'ECU) pour cette période seront convertis en euros
+                selon une règle qui sera précisée à la fin des instructions.
+                {% endblocktrans %}
+            </p>
+            <p class="card-text">
+                {% blocktrans trimmed %}
+                Après lecture des instructions, vous serez invité(e) à répondre à un questionnaire destiné à vérifier
+                votre bonne compréhension des instructions. Lorsque tous les participants auront fini de remplir
+                ce questionnaire, la partie débutera.
+                {% endblocktrans %}
+            </p>
+            <p class="card-text">
+                {% blocktrans trimmed %}
+                La suite des instructions est destinée à vous faire comprendre le déroulement de chaque période
+                de la première phase.
+                {% endblocktrans %}
+            </p>
+        </section>
+
+        <section id="types_investissement">
+            <h4 class="mt-3 mb-3">{% trans "Les types d'investissement" %}</h4>
+            <p class="card-text">
+                {% blocktrans trimmed with endowment=Constants.endowment group_size=Constants.players_per_group %}
+                A chaque période, chaque joueur de votre groupe disposera d'une dotation de {{ endowment }} jetons qu'il
+                devra répartir entre deux activités : l'activité A et l'activité B. L'activité A est commune aux
+                {{ group_size }} joueurs du groupe. L'activité B est spécifique à chaque joueur. Chaque jeton devra être investi
+                soit dans l'activité A soit dans l'activité B. Les gains associés à vos investissements dans chacune de ces
+                deux activités et le gain total sont décrits ci-dessous.
+                {% endblocktrans %}
+            </p>
+            <h5 class="mb-3">{% trans "Gain de l'investissement dans l'activité A" %}</h5>
+            <p class="card-text">
+                {% blocktrans trimmed with others=Constants.other_players_per_group %}
+                Votre gain de l'activité A dépend de votre investissement dans cette activité et de l'investissement des
+                {{ others }} autres joueurs de votre groupe. Ceci est expliqué plus en détail ci-dessous, dans le paragraphe
+                "Gain total".
+                {% endblocktrans %}
+            </p>
+            <h5 class="mb-3">{% trans "Gain de l'investissement dans l'activité B" %}</h5>
+            <p class="card-text">
+                {% blocktrans trimmed with gain_B=Constants.gain_activite_B %}
+                Votre gain de l'activité B ne dépend que de votre propre investissement dans cette activité. Chaque jeton
+                investi dans l'activité B vous rapporte {{ gain_B }} ECUs. De même, chaque jeton investi par un autre joueur
+                de votre groupe dans son activité B lui rapporte {{ gain_B }} ECUs.
+                {% endblocktrans %}
+            </p>
+            <p class="card-text">
+                <em>
+                    {% blocktrans trimmed %}
+                    Exemple: Vous investissez 5 jetons dans l'activité B. Votre gain de l’activité B est égal à
+                    {{ part_1_exemple_1_gain }} ECUs.
+                    {% endblocktrans %}
+                </em>
+            </p>
+        </section>
+
+        <section id="gain_total">
+            <h4 class="mt-3 mb-3">{% trans "Gain total" %}</h4>
+            <p class="card-text">
+                {% blocktrans trimmed with others=Constants.other_players_per_group %}
+                Votre gain total à chaque période est égal à votre gain de l'activité A + votre gain de l'activité B.
+                Vous n'avez aucun calcul à faire. Votre gain total est directement reporté dans un tableau, appelé
+                <em>Tableau de gains</em>, disponible ci-dessous. Ce tableau sera accessible à tout moment.
+                La première colonne correspond à votre investissement dans
+                l'activité A (compris entre 0 et 10). Les autres colonnes correspondent à la somme des investissements
+                possibles des {{ others }} autres joueurs de votre groupe dans l'activité A (comprise entre 0 et 20).
+                Vos gains ainsi que ceux des autres joueurs sont exprimés en ECUs. Dans chacune des cellules du tableau
+                figure votre propre gain total en ECUs. Ces valeurs s'appliquent également aux autres joueurs de votre
+                groupe. La lecture du tableau est simple. Illustrons le principe de lecture à l'aide d'un exemple.
+                {% endblocktrans %}
+            </p>
+            <figure>
+                {% include "mecanisme_approbation/payoffTableTemplate.html" %}
+                <figcaption class="text-center"><em>{% trans "Tableau de gains" %}</em></figcaption>
+            </figure>
+            <p class="card-text">
+                <em>
+                    {{ part_1_exemple_2}}
+                </em>
+            </p>
+        </section>
+
+        <section id="deroulement">
+            <h4 class="mt-3 mb-3">{% trans "Déroulement" %}</h4>
+            <p class="card-text">
+                {% blocktrans trimmed with endowment=Constants.endowment %}
+                A chaque période vous devrez répartir vos {{ endowment }} jetons entre votre investissement dans
+                l'activité A et votre investissement dans l'activité B. Vous êtes libre quant au choix de cette
+                répartition et vous pouvez par exemple décider de placer la totalité de vos jetons dans l'activité A ou
+                de placer l'ensemble de vos jetons dans l'activité B.
+                {% endblocktrans %}
+            </p>
+            <p class="card-text">
+                {% blocktrans trimmed with endowment=Constants.endowment %}
+                Concrètement, l'ordinateur vous demandera d'indiquer le nombre de jetons que vous décidez d'investir
+                dans l'activité A. Le reste de vos {{ endowment }} jetons sera automatiquement investi dans l'activité
+                B. La somme de ces deux investissements correspond exactement à votre dotation en jetons de la période.
+                En conséquence, vous n'avez pas la possibilité de reporter une partie ou la totalité de votre dotation
+                d'une période à l’autre.
+                {% endblocktrans %}
+            </p>
+            <p class="card-text">
+                {% blocktrans trimmed with others=Constants.other_players_per_group %}
+                Vous et les {{ others }} autres joueurs prendrez vos décisions d'investissement simultanément. Dès que
+                les décisions d'investissement auront été prises, l'ordinateur calculera votre gain total ainsi que
+                le gain total de chacun des autres joueurs, pour la période en cours. Un écran s'affichera ensuite pour
+                vous communiquer le nombre de jetons que vous avez investi dans chacune des deux activités et vos gains
+                totaux en ECUs. Les mêmes informations concernant les {{ others }} autres joueurs seront également
+                affichées sur l'écran. Un bouton "historique" en haut à droite des écrans vous permettra d'afficher un
+                tableau avec ces informations pour chacune des périodes passées.
+                {% endblocktrans %}
+            </p>
+        </section>
+        <section id="derniers_details">
+            <h4 class="mt-3 mb-3">{% trans "Derniers détails" %}</h4>
+            <p class="card-text">
+                {% blocktrans trimmed with endowment=Constants.endowment %}
+                Le taux de conversion des ECUs en euros est 15 ECUs = {{ conversion }} euro.
+                {% endblocktrans %}
+            </p>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 1" %}
+{% endblock %}
+
+{% block content %}
+    {% if current_part == 1 %}
+    <h3 class="mb-3">{% trans "Instructions" %}</h3>
+    {% else %}
+    <h3 class="mb-3">{% trans "Instructions de la phase " %} {{ current_part }}</h3>
+    {% endif %}
+
+    {% if player.round_number < Constants.round_second_part %}
+        {% include "mecanisme_approbation/Instructions1Template.html" %}
+    {% else %}
+        {% include "mecanisme_approbation/Instructions2Template.html" %}
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}

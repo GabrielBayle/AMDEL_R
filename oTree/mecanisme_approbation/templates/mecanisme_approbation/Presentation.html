@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Présentation de l'expérience " %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="card bg-light text-justify mb-3">
+        <div class="card-body">
+            <p class="card-text">
+                {% blocktrans trimmed %}
+                L'expérience comporte 3 parties. La partie 1 comporte 2 phases de 10 périodes. La partie 2 comporte
+                3 tâches. La partie 3 comporte 2 questionnaires.
+                {% endblocktrans %}
+            </p>
+            <p class="card-text">
+                {% blocktrans trimmed %}
+                Votre gain pour l'expérience sera composé de votre gain à la partie 1 et de votre gain à une des trois
+                tâches de la partie 2, sélectionnée de manière aléatoire par l'ordinateur.
+                Le calcul du gain de chacune des parties et tâches est expliqué dans les instructions de la partie ou
+                tâche.
+                {% endblocktrans %}
+            </p>
+        </div>
+    </div>
+
+    {% next_button %}
+
+{% endblock %}

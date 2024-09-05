@@ -1,0 +1,32 @@
+{
+  "baseline": [
+    {
+      "question": "Vous investissez 4 jetons dans l'activité A, les autres membres de votre groupe investissent 4 jetons chacun, quel est votre gain ?",
+      "propositions": ["217 ECUs", "150 ECUs", "258 ECUs"],
+      "solution": "258 ECUs",
+      "explication": "La somme des investissements dans l'activité A des deux autres joueurs de votre groupe est 4+4 = 8 jetons. Dans le tableau des gains totaux, votre gain correspondant à un investissement de votre part de 4 jetons et d'un investissement des deux autres joueurs de 8 jetons est égal à 258 ECUs."
+    },
+    {
+      "question": "Vous investissez 3 jetons dans l'activité A, les autres membres de votre groupe investissent respectivement 5 jetons et 7 jetons, soit 12 jetons au total. Quel est votre gain ?",
+      "propositions": ["258 ECUs", "183 ECUs", "210 ECUs"],
+      "solution": "210 ECUs",
+      "explication": "La somme des investissements dans l'activité A des deux autres joueurs de votre groupe est de 12 jetons. Dans le tableau des gains totaux, votre gain correspondant à un investissement de votre part de 3 jetons et d'un investissement des deux autres joueurs de 12 jetons est égal à 210 ECUs."
+    }
+  ],
+  "majority": [
+    {
+      "question": "Au cours de l’étape 2 vous approuvez les propositions d'investissement du groupe et les deux autres joueurs de votre groupe désapprouvent.\nQuelle est l'issue de l'étape 2 ?\nA) Approbation : les propositions d'investissement choisies à l’étape 1 seront exécutées par l'ordinateur qui affichera ces investissements et les gains totaux associés \nB) Désapprobation : les propositions choisies à l'étape 1 ne seront pas mises en oeuvre. Dans ce cas l’ordinateur sélectionnera par tirage au sort un des membres de votre groupe pour être le décideur de la période en cours.",
+      "propositions": ["A (approbation)", "B (désapprobation)"],
+      "solution": "B (désapprobation)",
+      "explication": "Pour que les propositions de l'étape 1 soient approuvées, au moins 2 joueurs sur 3 du groupe doivent approuver. Vous avez approuvé et les deux autres joueurs ont désapprouvé. Le résultat est donc : désapprobation."
+    }
+  ],
+  "unanimity": [
+    {
+      "question": "Au cours de l'étape 2 vous approuvez les propositions d'investissement de l’étape 1. L’un des deux autres joueurs approuve tandis que l'autre désapprouve.\nQuel est l’issue de l'étape 2 ?\nA) Approbation : les propositions d’investissement choisies à l’étape 1 seront exécutées par l’ordinateur qui affichera ces investissements et les gains totaux associés \nB) Désapprobation : les propositions choisies à l'étape 1 ne seront pas mises en oeuvre. Dans ce cas l’ordinateur sélectionnera par tirage au sort un des membres de votre groupe pour être le décideur de la période en cours.",
+      "propositions": ["A (approbation)", "B (désapprobation)"],
+      "solution": "B (désapprobation)",
+      "explication": "Pour que les propositions de l'étape 1 soient approuvées, tous les joueurs doivent approuver. Vous avez approuvé, l'un des deux autres joueurs a approuvé et l'autre désapprouvé. Le résultat est donc : désapprobation."
+    }
+  ]
+}

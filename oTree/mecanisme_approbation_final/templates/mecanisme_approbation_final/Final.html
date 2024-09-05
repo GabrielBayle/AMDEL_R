@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Fin de l'expérience" %}
+{% endblock %}
+
+{% block content %}
+
+    {% include "mecanisme_approbation_final/FinalTemplate.html" %}
+    <p>
+        {% trans "Vous pouvez écrire des commentaires sur l'expérience dans la zone ci-dessous. Pensez ensuite à cliquer sur le bouton Enregistrer" %}
+        {% formfield player.comments label="" %}
+    </p>
+
+    <button class="btn btn-primary">{% trans "Enregistrer" %}</button>
+
+{% endblock %}

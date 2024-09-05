@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie " %}{{ current_part }}
+{% endblock %}
+
+{% block content %}
+    <h3 class="mb-3">{% trans "Instructions" %}</h3>
+
+    <p class="mb-3 text-danger">
+        {% trans "Veuillez patienter, nous attendons les autres participants" %}
+    </p>
+
+    {% if player.round_number < Constants.round_second_part %}
+    {% include "mecanisme_approbation/Instructions1Template.html" %}
+    {% else %}
+    {% include "mecanisme_approbation/Instructions2Template.html" %}
+    {% endif %}
+
+{% endblock %}

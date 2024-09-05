@@ -1,0 +1,11 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Fin de l'expérience" %}
+{% endblock %}
+
+{% block content %}
+    {% include "mecanisme_approbation_final/FinalTemplate.html" %}
+{% endblock %}

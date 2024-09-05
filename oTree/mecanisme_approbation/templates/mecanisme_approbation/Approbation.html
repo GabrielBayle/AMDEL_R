@@ -1,0 +1,59 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 1" %}
+{% endblock %}
+
+{% block content %}
+<h5 class="mb-3">{% trans "Période" %} {{ player.round_number }} - {% trans "Approbation" %}</h5>
+
+<div class="text-right mb-3">
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal_area">{% trans "Instructions" %}</button>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#payoff_table">{% trans "Tableau des gains" %}</button>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#history">{% trans "Historique" %}</button>
+</div>
+
+<div class="card text-justify bg-light mb-3">
+    <div class="card-body">
+        <p class="card-text">
+            {% blocktrans trimmed with extraction=player.extraction extraction_group=player.group.extraction_group %}
+            Vous avez choisi d'investir {{ extraction }} jetons dans l'activité A. Les autres membres de votre groupe ont respectivement
+            choisi d'investir {{ other_1 }} et {{ other_2 }} jetons. Au total votre groupe investit donc {{ extraction_group }} jetons.
+            {% endblocktrans %}
+        </p>
+        <p>
+            {% blocktrans trimmed with player_payoff=player.payoff|floatformat:-2 %}
+            Avec ces investissements, votre gain serait de {{ player_payoff }} ECUs et les gains des autres joueurs de votre
+            groupe seraient respectivement égaux à {{ other_1_payoff }} ECUs et {{ other_2_payoff }} ECUs.
+            {% endblocktrans %}
+        </p>
+    </div>
+</div>
+
+<div class="mb-3">
+    <p>{% trans "Approuvez-vous ces investissements ?" %}</p>
+    {% formfield player.approbation label="" %}
+</div>
+
+    {% next_button %}
+
+
+{% include "global/TemplateModal.html" with title="Instructions" content="mecanisme_approbation/Instructions2Template.html" %}
+{% include "mecanisme_approbation/payoffTable.html" %}
+{% include "mecanisme_approbation/history.html" %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function fill_auto() {
+        let radios = document.querySelectorAll("input[type=radio]");
+        let selected = Math.floor(Math.random() * radios.length);
+        radios[selected].checked = true;
+        setTimeout(function(){
+            document.querySelector("form").submit();
+        }, 2000);
+    }
+</script>
+{% endblock %}

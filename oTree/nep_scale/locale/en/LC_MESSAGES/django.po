@@ -1,0 +1,148 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-07 16:01+0200\n"
+"PO-Revision-Date: 2019-10-09 20:58+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.0.6\n"
+"Language: en\n"
+
+#: models.py:30
+msgid "Pas du tout d'accord"
+msgstr "Strongly disagree"
+
+#: models.py:30
+msgid "Plutôt pas d'accord"
+msgstr "Disagree"
+
+#: models.py:30
+msgid "Je ne sais pas"
+msgstr "I do not know"
+
+#: models.py:31
+msgid "Plutôt d'accord"
+msgstr "Agree"
+
+#: models.py:31
+msgid "Tout à fait d'accord"
+msgstr "Strongly agree"
+
+#: models.py:37
+msgid ""
+"Nous nous approchons du nombre limite de personnes que la terre peut nourrir."
+msgstr ""
+"We are approaching the limit of the number of people the earth can support."
+
+#: models.py:38
+msgid ""
+"Les êtres humains ont le droit de modifier l’environnement naturel selon "
+"leurs besoins."
+msgstr ""
+"Humans have the right to modify the natural environment to suit their needs."
+
+#: models.py:39
+msgid ""
+"Quand les êtres humains essaient de changer le cours de la nature cela "
+"produit souvent des conséquences désastreuses."
+msgstr ""
+"When humans interfere with nature it often produces disastrous consequences."
+
+#: models.py:40
+msgid ""
+"L’ingéniosité humaine fera en sorte que nous ne rendrons pas la terre "
+"invivable."
+msgstr "Human ingenuity will insure that we do NOT make the earth unlivable."
+
+#: models.py:41
+msgid ""
+"Les êtres humains sont en train de sérieusement malmener l’environnement."
+msgstr "Humans are severely abusing the environment."
+
+#: models.py:42
+msgid ""
+"La terre posséderait une infinité de ressources naturelles si seulement nous "
+"savions comment en tirer mieux parti."
+msgstr ""
+"The earth has plenty of natural resources if we just learn how to develop "
+"them."
+
+#: models.py:43
+msgid ""
+"Les plantes et les animaux ont autant le droit que les êtres humains "
+"d’exister."
+msgstr "Plants and animals have as much right as humans to exist."
+
+#: models.py:44
+msgid ""
+"L’équilibre de la nature est assez fort pour faire face aux effets des "
+"nations industrielles modernes."
+msgstr ""
+"The balance of nature is strong enough to cope with impacts of modern "
+"industrial nations."
+
+#: models.py:45
+msgid ""
+"Malgré des aptitudes particulières, les humains sont toujours soumis aux "
+"lois de la nature."
+msgstr ""
+"Despite our special abilities humans are still subject to the laws of nature."
+
+#: models.py:46
+msgid ""
+"La prétendue \"crise écologique\" qui guette le genre humain a été largement "
+"exagérée."
+msgstr ""
+"The so-called “ecological crisis” facing humankind has been greatly "
+"exaggerated."
+
+#: models.py:47
+msgid ""
+"La terre est comme un vaisseau spatial avec un espace et des ressources très "
+"limités."
+msgstr "The earth is like a spaceship with very limited room and resources."
+
+#: models.py:48
+msgid "Les humains ont été créés pour gouverner le reste de la nature."
+msgstr "Humans were meant to rule over the rest of nature."
+
+#: models.py:49
+msgid "L’équilibre de la nature est très fragile et facilement perturbé."
+msgstr "The balance of nature is very delicate and easily upset."
+
+#: models.py:50
+msgid ""
+"Les humains vont un jour apprendre suffisamment sur le fonctionnement de la "
+"nature pour pouvoir le contrôler."
+msgstr ""
+"Humans will eventually learn enough about how nature works to be able to "
+"control it."
+
+#: models.py:51
+msgid ""
+"Si les choses continuent au rythme actuel nous allons bientôt vivre une "
+"catastrophe écologique majeure."
+msgstr ""
+"If things continue on their present course, we will soon experience a major "
+"ecological catastrophe."
+
+#: templates/nep_scale/Answers.html:11
+msgid ""
+"Ci-dessous vous trouverez des phrases concernant la relation entre les êtres "
+"humains et l'environnement. Pour chaque phrase, indiquez, si vous êtes tout "
+"à fait d'accord – plutôt d'accord – plutôt pas d’accord – pas du tout "
+"d’accord – je ne sais pas – en sélectionnant votre réponse."
+msgstr ""
+"Below you will find some sentences concerning relationship between human "
+"beings and the environment. For each sentence, state if you strongly agree - "
+"agree - disagree - strongly disagree - you do not know - by choosing your "
+"answer."

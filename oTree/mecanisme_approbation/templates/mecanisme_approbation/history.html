@@ -1,0 +1,84 @@
+{% load otree %}
+{% load i18n %}
+
+<div class="modal fade" id="history" tabindex="-1" role="dialog" aria-labelledby="history_title" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h3 class="modal-title" id="modal_area_title">
+            {% trans "Historique" %}
+        </h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+        <div class="modal-body">
+
+          {% if player.round_number < Constants.round_second_part or subsession.treatment == Constants.baseline %}
+              <table class="table table-sm">
+                  <thead>
+                  <tr>
+                      <th>{% trans "Période" %}</th>
+                      <th>{% trans "Votre<br>investissement" %}</th>
+                      <th>{% trans "Investissement<br>des autres" %}</th>
+                      <th>{% trans "Investissement<br>total<br>du groupe" %}</th>
+                      <th>{% trans "Votre gain<br>total" %}</th>
+                      <th>{% trans "Gain<br>total<br>des autres" %}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for p in player.in_previous_rounds reversed %}
+                  <tr>
+                      <td>{{ p.round_number }}</td>
+                      <td>{{ p.extraction }}</td>
+                      <td>{{ p.get_others_in_group.0.extraction }} et {{ p.get_others_in_group.1.extraction }}</td>
+                      <td>{{ p.group.extraction_group }}</td>
+                      <td>{{ p.payoff|floatformat:0 }} ECUs</td>
+                      <td>{{ p.get_others_in_group.0.payoff|floatformat:0 }} et {{ p.get_others_in_group.1.payoff|floatformat:0 }} ECUs</td>
+                  </tr>
+                  {% endfor %}
+                  </tbody>
+              </table>
+
+            {% else %}
+
+              <table class="table table-sm" style="font-size: smaller">
+                  <thead>
+                  <tr>
+                      <th>{% trans "Période" %}</th>
+                      <th>{% trans "Votre<br>investissement" %}</th>
+                      <th>{% trans "Investissement<br>des autres" %}</th>
+                      <th>{% trans "Investissement<br>total<br>du groupe" %}</th>
+                      <th>{% trans "Nombre d'approbation<br>dans le groupe" %}</th>
+                      <th>{% trans "Investissement<br>choisi par<br>le décideur" %}</th>
+                      <th>{% trans "Nouvel<br>investissement<br>total<br>du groupe" %}</th>
+                      <th>{% trans "Votre gain<br>total" %}</th>
+                      <th>{% trans "Gain<br>total<br>des autres" %}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for p in player.in_previous_rounds reversed %}
+                  <tr>
+                      <td>{{ p.round_number }}</td>
+                      <td>{{ p.extraction }}</td>
+                      <td>{{ p.get_others_in_group.0.extraction }} et {{ p.get_others_in_group.1.extraction }}</td>
+                      <td>{{ p.group.extraction_group }}</td>
+                      <td>{% if p.group.approbation_yes == None %} - {% else %}{{ p.group.approbation_yes }}{% endif %}</td>
+                      <td>{% if p.group.extraction_dictator == None %} - {% else %}{{ p.group.extraction_dictator }}{% endif %}</td>
+                      <td>{% if p.group.extraction_group_applied == None %} - {% else %}{{ p.group.extraction_group_applied }}{% endif %}</td>
+                      <td>{{ p.payoff|floatformat:0 }} ECUs</td>
+                      <td>{{ p.get_others_in_group.0.payoff|floatformat:0 }} et {{ p.get_others_in_group.1.payoff|floatformat:0 }} ECUs</td>
+                  </tr>
+                  {% endfor %}
+                  </tbody>
+              </table>
+
+            {% endif %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Ok" %}</button>
+      </div>
+    </div>
+  </div>
+</div>

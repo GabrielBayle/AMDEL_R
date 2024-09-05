@@ -1,0 +1,57 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Résultats" %}
+{% endblock %}
+
+{% block content %}
+<div class="text-right mb-3">
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal_area">{% trans "Instructions" %}</button>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#payoff_table">{% trans "Tableau des gains" %}</button>
+</div>
+
+<p class="mb-3">
+    Vous avez fait {{ player.understanding_faults }} faute{{ player.understanding_faults| pluralize }}.
+</p>
+
+{% for q in understanding %}
+<div class="card bg-light text-justify mb-3">
+    <div class="card-body">
+        <h5 class="card-title">Question {{ forloop.counter }}</h5>
+        <p class="card-text">
+            {{ q.question|linebreaks }}
+        </p>
+        {% if q.player_rep == q.solution %}
+        <p class="card-text">
+            Vous avez répondu :
+            <span class="text-success">{{ q.player_rep}}</span>
+        </p>
+        {% else %}
+        <p class="card-text">
+            Vous avez répondu :
+            <span class="text-danger">{{ q.player_rep}}</span>
+        </p>
+        <p class="card-text">
+            La bonne réponse était: <span class="text-success">{{ q.solution }}</span>
+        </p>
+        {% endif %}
+        <p class="card-text">
+            <u>Explication</u>: {{ q.explication }}
+        </p>
+    </div>
+</div>
+{% endfor %}
+
+
+{% next_button %}
+
+{% if player.round_number < Constants.round_second_part %}
+    {% include "global/TemplateModal.html" with title="Instructions" content="mecanisme_approbation/Instructions1Template.html" %}
+{% else %}
+    {% include "global/TemplateModal.html" with title="Instructions" content="mecanisme_approbation/Instructions2Template.html" %}
+{% endif %}
+{% include "mecanisme_approbation/payoffTable.html" %}
+
+{% endblock %}

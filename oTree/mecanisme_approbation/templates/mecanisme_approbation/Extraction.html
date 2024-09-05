@@ -1,0 +1,43 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 1" %}
+{% endblock %}
+
+{% block content %}
+<h5 class="mb-3">{% trans "Période" %} {{ player.round_number }} - {% trans "Décision" %}</h5>
+
+<div class="text-right mb-3">
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal_area">{% trans "Instructions" %}</button>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#payoff_table">{% trans "Tableau des gains" %}</button>
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#history">{% trans "Historique" %}</button>
+</div>
+
+<div class="card text-justify bg-light mb-3">
+    <div class="card-body">
+        <p class="card-text">
+            {% blocktrans trimmed with endowment=Constants.endowment %}
+            Vous pouvez investir entre 0 et {{ endowment }} jetons dans l'activité A. Les jetons que vous n'aurez pas
+            investi seront automatiquement investis dans l'activité B.
+            {% endblocktrans %}
+        </p>
+    </div>
+</div>
+
+<div class="mb-3">
+    <p>{% trans "Veuillez saisir le montant de votre investissement dans l'activité A" %}</p>
+    {% formfield player.extraction label="" %}
+</div>
+
+    {% next_button %}
+
+{% if player.round_number < Constants.round_second_part %}
+    {% include "global/TemplateModal.html" with title="Instructions" content="mecanisme_approbation/Instructions1Template.html" %}
+{% else %}
+    {% include "global/TemplateModal.html" with title="Instructions" content="mecanisme_approbation/Instructions2Template.html" %}
+{% endif %}
+{% include "mecanisme_approbation/payoffTable.html" %}
+{% include "mecanisme_approbation/history.html" %}
+{% endblock %}

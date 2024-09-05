@@ -1,0 +1,45 @@
+{% load otree %}
+{% load i18n %}
+
+<div class="card bg-light text-justify mb-3">
+  <div class="card-body">
+    <p class="card-text">
+      {% blocktrans trimmed %}
+      La rémunération de cette expérience est composée
+      {% endblocktrans %}
+    </p>
+    <ul>
+      <li>{% trans "une période de la partie 1" %}</li>
+      <li>{% trans "une tâche de la partie 2" %}</li>
+    </ul>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>{% trans "Participant" %}</th>
+    <th>{% trans "Poste" %}</th>
+    <th>{% trans "Partie 1" %}</th>
+    <th>{% trans "Partie 2 tâche 1 (SVO)" %}</th>
+    <th>{% trans "Partie 2 tâche 2 (NLE)" %}</th>
+    <th>{% trans "Partie 2 tâche 3 (CRT)" %}</th>
+    <th>{% trans "Partie 2 tâche sélectionnée" %}</th>
+    <th>{% trans "Gain final" %}</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for p in players_infos %}
+  <tr>
+    <td>{{ p.participant }}</td>
+    <td>{{ p.label }}</td>
+    <td>{{ p.part_1_payoff }}€</td>
+    <td>{{ p.part_2_svo_payoff }}€</td>
+    <td>{{ p.part_2_targetNLE_payoff }}€</td>
+    <td>{{ p.part_2_crt_payoff }}€</td>
+    <td>{{ p.part_2_selected_task }}</td>
+    <td>{{ p.payoff }}€</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>

@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 2" %}
+{% endblock %}
+
+{% block content %}
+    <h5 class="mb-3">{% trans "Tâche 2" %} - {% trans "Fin" %}</h5>
+
+    <div class="card bg-light text-justify mb-3">
+        <div class="card-body">
+            <p class="card-text">
+                {% blocktrans trimmed %}
+                La tâche est terminée. Vous aurez le résultat à la fin de l'expérience. Cliquez sur "Suivant" pour
+                démarrer la tâche suivante.
+                {% endblocktrans %}
+            </p>
+        </div>
+    </div>
+
+    {% next_button %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'fill_auto.js' %}"></script>
+<script>
+    window.onload = function () {
+        if (js_vars.fill_auto)
+            fill_auto();
+    }
+</script>
+{% endblock %}
+
+
+

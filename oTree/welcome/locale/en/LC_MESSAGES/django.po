@@ -1,0 +1,46 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-04 11:21+0100\n"
+"PO-Revision-Date: 2022-12-04 11:22+0100\n"
+"Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: templates/welcome/Welcome.html:9
+msgid "Bienvenue au Laboratoire d'Economie Expérimentale de Montpellier"
+msgstr "Welcome to the Experimental Economics Laboratory of Montpellier"
+
+#: templates/welcome/Welcome.html:26
+msgid ""
+"L'expérience à laquelle vous allez participer est destinée à l'étude de la "
+"prise de décision. Nous vous demandons de lire attentivement les "
+"instructions, elles doivent vous permettre de bien comprendre l'expérience. "
+"Toutes vos décisions seront traitées de façon anonyme. Vous indiquerez vos "
+"choix à l'ordinateur devant lequel vous êtes assis(e). A partir de "
+"maintenant nous vous demandons de ne plus parler. Si vous avez une question "
+"levez la main et un expérimentateur viendra vous répondre en privé."
+msgstr ""
+"The experiment you are about to participate in is designed to study decision "
+"making. We ask you to read the instructions carefully, they should help you "
+"understand the experiment. All your decisions will be treated anonymously. "
+"You will indicate your choices to the computer you are sitting in front of. "
+"From now on we ask you not to speak. If you have a question, raise your hand "
+"and an experimenter will come and answer you privately."
+
+#: templates/welcome/Welcome.html:39
+msgid "J'ai lu et j'accepte les conditions de l'expérience"
+msgstr "I have read and I accept the conditions of the experiment"
+
+#~ msgid "Veuillez patienter"
+#~ msgstr "Please wait"

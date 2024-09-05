@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 2" %}
+{% endblock %}
+
+{% block content %}
+    <h5 class="mb-3">{% trans "Tâche 2" %} - {% trans "Exercice" %} {{ player.round_number }} - {% trans "Résultat" %}</h5>
+
+    <div class="text-right mb-3">
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal_area">{% trans "Instructions" %}</button>
+    </div>
+
+    <div class="card bg-light text-justify mb-3">
+        <div class="card-body">
+            <p class="card-text">
+                {% blocktrans trimmed with cible=player.NLE_nombre_cible curseur=player.NLE_curseur_position payoff=player.payoff|floatformat:2 %}
+                La cible était {{ cible }}. Vous avez positionné le curseur sur la valeur {{ curseur }}. Votre gain
+                est donc de {{ payoff }} euros.
+                {% endblocktrans %}
+            </p>
+        </div>
+    </div>
+
+    {% next_button %}
+    {% include "global/TemplateModal.html" with title="Instructions" content="targetNLE/InstructionsTemplate.html" %}
+{% endblock %}
+
+

@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Partie 2" %}
+{% endblock %}
+
+{% block content %}
+    <h5 class="mb-3">{% trans "Tâche 2" %}</h5>
+
+    {% include "targetNLE/InstructionsTemplate.html" %}
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'fill_auto.js' %}"></script>
+<script>
+    window.onload = function () {
+        if (js_vars.fill_auto)
+            fill_auto();
+    }
+</script>
+{% endblock %}
+

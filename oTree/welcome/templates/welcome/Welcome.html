@@ -1,0 +1,60 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="text-center mb-3">
+    <h1>
+        {% blocktrans trimmed %}
+        Bienvenue au Laboratoire d'Economie Expérimentale de Montpellier
+        {% endblocktrans %}
+    </h1>
+</div>
+
+<figure class="mb-3 text-center">
+    {% if language == "fr" %}
+    <img src="{% static 'LEEM.png' %}" width="50%" alt="Logo LEEM">
+    {% else %}
+    <img src="{% static 'LEEM_en.png' %}" width="50%" alt="Logo LEEM">
+    {% endif %}
+</figure>
+
+<div class="mt-3 card bg-light text-justify mb-3">
+    <div class="card-body">
+        <p>
+            {% blocktrans trimmed %}
+                L'expérience à laquelle vous allez participer est destinée à l'étude de la prise de décision. Nous vous
+                demandons de lire attentivement les instructions, elles doivent vous permettre de bien comprendre
+                l'expérience. Toutes vos décisions seront traitées de façon anonyme. Vous indiquerez vos choix à
+                l'ordinateur devant lequel vous êtes assis(e). A partir de maintenant nous vous demandons de ne plus
+                parler. Si vous avez une question levez la main et un expérimentateur viendra vous répondre en privé.
+            {% endblocktrans %}
+        </p>
+    </div>
+</div>
+
+<div class="mb-3">
+    <input type="checkbox" name="consent" id="id_consent" class="form-check-input" />
+    <label for="id_consent" class="form-check-label">{% trans "J'ai lu et j'accepte les conditions de l'expérience" %}</label>
+</div>
+
+{% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.title = "Welcome";
+    let btn_next = document.querySelector(".otree-btn-next");
+    btn_next.disabled = true;
+    let consent = document.querySelector("input[name=consent]");
+    consent.addEventListener("click", () => {btn_next.disabled = !consent.checked;});
+
+    if (js_vars.fill_auto) {
+        consent.click();
+        setTimeout(() => {btn_next.click();}, 2000);
+    }
+
+</script>
+{% endblock %}

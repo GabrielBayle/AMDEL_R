@@ -1,0 +1,68 @@
+{% load otree static %}
+{% load i18n %}
+
+<div class="card bg-light text-justify mb-3">
+    <div class="card-body">
+        <p class="card-text">
+            {% blocktrans trimmed with num_rounds=Constants.num_rounds decision_time=Constants.decision_time %}
+            Dans cette tâche, vous devez indiquer la position d'un nombre sur une ligne à l'aide de la souris. Vous
+            devrez faire cet exercice {{ num_rounds }} fois, avec un nombre différent à chaque fois.
+            La ligne va de 0 à 100, et le curseur est initialement positionné à 0. Vous diposerez de {{ decision_time }}
+            secondes pour le déplacer et vous rapprocher de la valeur demandée. Si vous n'avez pas répondu à la fin des
+            {{ decision_time }} secondes, le programme considèrera que votre réponse est égale à 0 et passera
+            automatiquement à l'exercice suivant.
+            {% endblocktrans %}
+        </p>
+        <p class="text-center">
+            {% blocktrans trimmed %}
+            La figure ci-dessous montre la ligne qui sera affichée, avec le curseur positionné initialement à 0
+            {% endblocktrans %}
+        </p>
+        <div class="text-center">
+            0&nbsp;<input type="range" style="width: 80%;" min="0" max="100" value="0" step="0.1" list="input_ticks">&nbsp;100
+            <datalist id="input_ticks">
+                <option label="0">0</option>
+                <option label="100">100</option>
+            </datalist>
+        </div>
+        <h6 class="mt-3 mb-3">{% trans "Calcul du gain" %}</h6>
+        <p class="card-text">
+            {% blocktrans trimmed %}
+            Votre gain dépendra de la distance entre la position que vous aurez choisie et le nombre cible. Précisément,
+            si "d" est la distance entre la position choisie et le nombre cible, votre gain est égal à 3 - 0.05 x d, avec
+            d = |nombre cible - position choisie|. Illustrons ce calcul à l'aide de trois exemples.
+            {% endblocktrans %}
+        </p>
+        <p class="card-text">
+            <em>
+            {% blocktrans trimmed %}
+            Exemple 1: le nombre cible est 12.2, et vous avez positionné le curseur sur la valeur 11.5. Votre gain est
+            alors égal à 3 - 0.05 x |12.2 - 11.5| = 2.96 euros.
+            {% endblocktrans %}
+            </em>
+        </p>
+        <p class="card-text">
+            <em>
+            {% blocktrans trimmed %}
+            Exemple 2: le nombre cible est 12.2, et vous avez positionné le curseur sur la valeur 55. Votre gain est
+            alors égal à 3 - 0.05 x |12.2 - 55| = 0.86 euros.
+            {% endblocktrans %}
+            </em>
+        </p>
+        <p class="card-text">
+            <em>
+            {% blocktrans trimmed %}
+            Exemple 3: le nombre cible est 12.2, et vous avez positionné le curseur sur la valeur 90. Votre gain est
+            alors égal à 3 - 0.05 x |12.2 - 90| = -0.89 euros. Dans ce cas votre gain est de 0 euro.
+            {% endblocktrans %}
+            </em>
+        </p>
+        <p class="card-text">
+            {% blocktrans trimmed with num_rounds=Constants.num_rounds %}
+            A la fin de cette tâche un des {{ num_rounds }} exercices sera aléatoirement sélectionné par l'ordinateur.
+            Votre gain a cet exercice déterminera votre gain pour cette tâche. Votre gain minimum est 0 euro et votre
+            gain maximum est 3 euros.
+            {% endblocktrans %}
+        </p>
+    </div>
+</div>

@@ -32,7 +32,7 @@ The experiment was conducted using oTree, a platform for developing and running 
 
 If you use any materials from this repository, please cite the paper that is forthcoming in the JEBO:
 
-Bayle, Gabriel, Farolfi, Stéphane, Lavaine, Emeline, and Willinger, Marc (2024). "Solving conflict over common pool resources through delegation to a stakeholder." *Journal of Economic Behavior and Organization*.
+Bayle, Gabriel, Farolfi, Stefano, Lavaine, Emmanuelle, and Willinger, Marc (2024). "Solving conflict over common pool resources through delegation to a stakeholder." *Journal of Economic Behavior and Organization*.
 
 ## Link to Repository
 

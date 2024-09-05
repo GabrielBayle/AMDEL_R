@@ -17,6 +17,7 @@ This repository contains all supplementary materials for the paper:
    - The oTree code that was used to conduct the experiment.
    - This code allows for replication of the experimental sessions, simulating the interactions of participants in a common pool resource scenario with the delegation mechanism.
    - The code is provided for oTree 3 (the sessions were ran in 2021).
+   - The code has been created by Dimitri Dubois (CNRS, CEE-M; [GitHub](https://github.com/dimdub34))
 
 4. **Experiment Instructions**  
    - The instructions that were given to participants during the experiment (in French).
